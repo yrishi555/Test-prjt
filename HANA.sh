@@ -32,6 +32,4 @@ mount /dev/sdb1 /hana/shared
 mount /dev/sdb2 /hana/data/GSE
 mount /dev/sdb3 /hana/log/GSE
 
-tar -xvf SAP_HANA_SPS12_Rev121.tar.gz
-unrar x 51051151_part1.exe
-mv  51051151  /hana/shared/software/
+mv  /root/51051151  /hana/shared/software/
