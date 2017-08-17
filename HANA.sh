@@ -24,6 +24,9 @@ EOF
 mkfs.ext4 /dev/sdb1 -F
 mkfs.ext4 /dev/sdb2
 mkfs.ext4 /dev/sdb3
+
+sleep 30
+
 mkdir -p /hana/shared/software
 mkdir -p /hana/data/GSE
 mkdir -p /hana/log/GSE
@@ -31,6 +34,8 @@ mkdir -p /hana/log/GSE
 mount /dev/sdb1 /hana/shared
 mount /dev/sdb2 /hana/data/GSE
 mount /dev/sdb3 /hana/log/GSE
+
+sleep 30
 
 mv  /root/51051151  /hana/shared/software/51051151
 
