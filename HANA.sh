@@ -32,7 +32,8 @@ mount /dev/sdb1 /hana/shared
 mount /dev/sdb2 /hana/data/GSE
 mount /dev/sdb3 /hana/log/GSE
 
-mv  /root/51051151  /hana/shared/software
+mv  /root/51051151  /hana/shared/software/51051151
+
 cd /hana/shared/software/51051151/DATA_UNITS/HDB_LCM_LINUX_X86_64/
 
 (
