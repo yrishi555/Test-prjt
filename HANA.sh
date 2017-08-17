@@ -33,6 +33,7 @@ mount /dev/sdb2 /hana/data/GSE
 mount /dev/sdb3 /hana/log/GSE
 
 mv  /root/51051151  /hana/shared/software
+cd /hana/shared/software/51051151/DATA_UNITS/HDB_LCM_LINUX_X86_64/
 
 (
 echo 1 # For installing new system
