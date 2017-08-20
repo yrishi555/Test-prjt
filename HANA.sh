@@ -52,6 +52,7 @@ echo 1 # Single container Database Mode
 echo   # custom System Usage
 echo   # Location of Data Volumes [/hana/data/GSE]
 echo   # Location of Log Volumes [/hana/log/GSE]
+echo   # Restrict maximum memory allocation
 echo   # Host Name For Host 'susesapvm' [susesapvm]
 echo HP1nvent # SAP Host Agent User (sapadm) Password
 echo HP1nvent # SAP Host Agent User (sapadm) Password:
