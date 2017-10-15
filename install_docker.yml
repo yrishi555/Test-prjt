@@ -1,0 +1,61 @@
+---
+- hosts: docker
+  become_user: root
+  become: true
+
+  vars:
+    compose_ver: 1.15.0
+    db_ip: 10.43.94.211
+ 
+  environment:  
+      http_proxy: http://web-proxy.cup.hp.com:8080
+      https_proxy: https://web-proxy.cup.hp.com:8080
+
+  tasks:
+
+    - name: Install dependencies
+      apt:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - apt-transport-https
+        - ca-certificates
+        - curl
+        - software-properties-common
+        - python-setuptools
+        - python-pip 
+
+    - name: Docker-PY
+      pip:
+        name: "{{ item }}"
+      with_items:
+      - six==1.4
+      - docker-py==1.1.0
+    
+    - name: apt update
+      apt: update_cache=yes
+
+    - name: Add Dockerâ€™s official GPG key
+      shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+    - name: Set Stable repo
+      shell: add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+    - name: apt update
+      apt: update_cache=yes
+
+    - name: Install Docker
+      shell: apt-get install docker-ce
+    
+    - name: run wordpress
+      docker:
+        name: wordpress
+        image: wordpress
+        env:
+          WORDPRESS_DB_HOST: 10.43.94.211:3306
+          WORDPRESS_DB_USER: wordpress
+          WORDPRESS_DB_PASSWORD: wordpress
+        ports: "8000:80"
+        state: started
+
+
