@@ -1,15 +1,10 @@
 ---
-- hosts: docker
-  become_user: root
-  become: true
+- hosts: 10.0.0.5
 
   vars:
     compose_ver: 1.15.0
-    db_ip: 10.43.94.211
- 
-  environment:  
-      http_proxy: http://web-proxy.cup.hp.com:8080
-      https_proxy: https://web-proxy.cup.hp.com:8080
+    db_ip: 10.0.0.4
+
 
   tasks:
 
@@ -17,13 +12,14 @@
       apt:
         name: "{{ item }}"
         state: latest
+        update_cache: yes
       with_items:
         - apt-transport-https
         - ca-certificates
         - curl
         - software-properties-common
         - python-setuptools
-        - python-pip 
+        - python-pip
 
     - name: Docker-PY
       pip:
@@ -31,9 +27,14 @@
       with_items:
       - six==1.4
       - docker-py==1.1.0
-    
-    - name: apt update
-      apt: update_cache=yes
+
+    - name: install extra pkg for ubuntu 14.04
+      apt:
+       name: "{{ item }}"
+       update_cache: yes
+      with_items:
+      - linux-image-extra-4.4.0-96-generic
+      - linux-image-extra-virtual
 
     - name: Add Dockerâ€™s official GPG key
       shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -45,17 +46,8 @@
       apt: update_cache=yes
 
     - name: Install Docker
-      shell: apt-get install docker-ce
-    
+      apt:
+       name: docker-ce
+
     - name: run wordpress
-      docker:
-        name: wordpress
-        image: wordpress
-        env:
-          WORDPRESS_DB_HOST: 10.43.94.211:3306
-          WORDPRESS_DB_USER: wordpress
-          WORDPRESS_DB_PASSWORD: wordpress
-        ports: "8000:80"
-        state: started
-
-
+      shell: docker run -itd -e WORDPRESS_DB_HOST=10.0.0.4:3306 -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root -p 8000:80 --name wordpress wordpress
