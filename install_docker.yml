@@ -50,4 +50,4 @@
        name: docker-ce
 
     - name: run wordpress
-      shell: docker run -itd -e WORDPRESS_DB_HOST={{ db_ip }}:3306 -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=Password1234 -p 80:80 --name wordpress wordpress
+      shell: docker run -itd -e WORDPRESS_DB_HOST={{ db_ip }}:3306 -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root -p 80:80 --name wordpress wordpress
