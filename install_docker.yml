@@ -3,7 +3,7 @@
 
   vars:
     compose_ver: 1.15.0
-    db_ip: "{{ dp_ip }}"
+    db_ip: 10.1.1.22
 
 
   tasks:
@@ -50,4 +50,4 @@
        name: docker-ce
 
     - name: run wordpress
-      shell: docker run -itd -e WORDPRESS_DB_HOST={{ db_ip }}:3306 -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root -p 80:80 --name wordpress wordpress
+      shell: docker run -itd -e WORDPRESS_DB_HOST=10.1.1.22:3306 -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root -p 80:80 --name wordpress wordpress
