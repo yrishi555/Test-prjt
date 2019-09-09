@@ -1,0 +1,21 @@
+{
+  "ignition": {
+    "config": {},
+    "timeouts": {},
+    "version": "2.1.0"
+  },
+  "networkd": {},
+  "passwd": {
+    "users": [
+      {
+        "name": "core",
+        "passwordHash": "$1$uuxkP9Xk$VeYPgwvuJoO0PO5mjYu.G/",
+        "sshAuthorizedKeys": [
+          "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC0XUWZZpWZPMOAIfIDwN7DtL1c8GC45tajpov4O2rkZLtZnD2Mggbr+6MPLR+NkByxCDFoNtyrFI149NPdzP9JSl2IdI2bIcZ1JDeF/y35EN9A07bg3ZHXC6M89VRKKWaptIYoGXCJDALtPv6I475w7wAwWQ+utJb2dk2cmGO/Ak/pvRb2wo2CCzzsXcikgzKx8kx0YEytqlbo02xCtYL++QGWD4DNmHIDYCEP3TZRjPl159uspsfDlfwg3hMFnDeRMvPdEZDV8dkXLEQAeHpzjO9o8ZE+kSwrZbZbGSlWIIkubJKZoWS+F/Y/F4XgXF+FVm45z//qyTCIcYBE1Yrn root@proxy.hpe.lan"
+        ]
+      }
+    ]
+  },
+  "storage": {},
+  "systemd": {}
+}
