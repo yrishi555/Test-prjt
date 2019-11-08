@@ -1,3 +1,2 @@
 #!/bin/sh
-sudo -i
-mkdir /root/RISHI
+echo "RISHI" > /tmp/rishi.log
